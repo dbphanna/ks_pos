@@ -1,3 +1,11 @@
+<?php include 'config/db_connect.php';
+// check if user is not logged in 
+ob_start();
+session_start();
+if(empty($_SESSION['user_id'])) {
+	header('location:index.php');
+	exit();
+}
 <?php
 	include "header.php";
 ?>

@@ -1,6 +1,16 @@
-	<?php 	if (isset($_GET['inv'])) {
-		$inv = $_GET['inv'];
-	} ?>
+ <?php include 'config/db_connect.php';
+// check if user is not logged in 
+ob_start();
+session_start();
+if(empty($_SESSION['user_id'])) {
+  header('location:index.php');
+  exit();
+}
+$inv = "";
+if (isset($_GET['inv'])) {
+$inv = $_GET['inv'];
+} 
+?>
 <!doctype html>
 <html lang="en" class="fullscreen-bg">
 <head>
@@ -53,6 +63,11 @@
 								<select class="form-control select2" style="width:400px;height:60px;" name="">
 										<option value=""></option>
 								</select>
+						  </div>
+						  <div class="form-group">
+						    <label for="email">Quantity:</label>
+						  <input type="number" min = "1" class="form-control" value = "1">
+								
 						  </div>
 
 

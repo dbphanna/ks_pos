@@ -1,6 +1,12 @@
-<?php
-	include "header.php";
+<?php include 'config/db_connect.php'; 
+ob_start();
+session_start();
+if(empty($_SESSION['user_id'])) {
+  header('location:index.php');
+  exit();
+}
 ?>
+<?php include "header.php"; ?>
 		<div class="main">
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
@@ -9,7 +15,7 @@
 
 					<div class="panel panel-headline">
 						<div class="panel-body">
-							<h2 class="text-primary">Categorys</h2>
+							<h2 class="text-primary">Category</h2>
 							<!-- <p class="panel-subtitle">ប្រភេទក្រុមទំនិញ</p> -->
               <hr>
 

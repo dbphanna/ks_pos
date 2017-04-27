@@ -21,13 +21,13 @@ if( !empty($_POST) ) {
 	} 
 	else {
 		// if username exists
-		$sql = "SELECT * FROM user WHERE username = '$username'";
+		$sql = "SELECT * FROM user WHERE user_name = '$username'";
 		$query = $connect->query($sql);
 		if( $query->num_rows > 0 ) {
 		// check username and password
 			$password = md5($password);
 
-			$sql = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
+			$sql = "SELECT * FROM user WHERE user_name = '$username' AND password = '$password'";
 			$query = $connect->query($sql);
 			$result = $query->fetch_array();
 
@@ -35,7 +35,7 @@ if( !empty($_POST) ) {
 
 			if($query->num_rows == 1) {				
 				$_SESSION['logged_in'] = true;
-				$_SESSION['user_id'] = $result['id'];
+				$_SESSION['user_id'] = $result['user_id'];
 
 				header('location:category.php');
 				exit();
